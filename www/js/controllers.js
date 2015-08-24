@@ -1,5 +1,5 @@
 angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-segmented-control', 'app.services', 'ionic.wizard', 'localStorage'])
-	.controller('AppCtrl', function($timeout, $cordovaNetwork, $cordovaVibration, $cordovaBarcodeScanner, $ionicSlideBoxDelegate, $cordovaPush, $rootScope, $cordovaAdMob, $ionicSlideBoxDelegate, $scope, $ionicPopup, $ionicActionSheet, $cordovaCamera, $cordovaFile, $state, $cordovaStatusbar, $ionicModal, $ionicPlatform, $ionicUser, $ionicPush, $localStorage) {
+	.controller('AppCtrl', function($timeout, $cordovaNetwork, $cordovaVibration, $cordovaBarcodeScanner, $ionicSlideBoxDelegate, $cordovaPush, $rootScope, $cordovaAdMob, $ionicSlideBoxDelegate, $scope, $ionicPopup, $ionicActionSheet, $cordovaCamera, $cordovaFile, $state, $cordovaStatusbar, $ionicModal, $ionicPlatform, $ionicUser, $ionicPush, $localStorage, $ionicLoading) {
 		$scope.fontChange = function() {
 				console.log("set font" + $scope.user.font)
 				var font = $scope.user.font;
@@ -382,7 +382,6 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
             },
     ],
 						buttonClicked: function(index) {
-							var options;
 							switch (index) {
 								case 0:
 									//Handle Take Photo Button
@@ -421,11 +420,9 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
 			}
 			// 3
 		$scope.processImage = function() {
-			$cordovaCamera.getPicture($scope.options).then(function(imageData) {
+			/*$cordovaCamera.getPicture($scope.options).then(function(imageData) {
 					// 4
-					$scope.user.image = imageData;
-					window.localStorage["image"] = imageData;
-					/*
+					console.log(imageData)
 					onImageSuccess(imageData);
 
 					function onImageSuccess(fileURI) {
@@ -454,17 +451,72 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
 
 					// 6
 					function onCopySuccess(entry) {
-						$timeout(function() {
-							$scope.$apply(function() {
-								$scope.user.image = entry.nativeURL;
-							})
+						$scope.$apply(function() {
+							$scope.user.image = entry.nativeURL;
 						})
+
 						console.log(entry);
 					};
 
 
 					function fail(error) {
 						console.log("fail: " + error.code + error.message);
+					}
+				},
+				function(err) {
+					console.log(err.code + ": " + error.message);
+				});*/
+			$scope.user.image;
+
+			$scope.addImage = function() {
+				// 2
+				var options = {
+					destinationType: Camera.DestinationType.FILE_URI,
+					sourceType: Camera.PictureSourceType.CAMERA, // Camera.PictureSourceType.PHOTOLIBRARY
+					allowEdit: false,
+					encodingType: Camera.EncodingType.JPEG,
+					popoverOptions: CameraPopoverOptions,
+				};
+
+				// 3
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+
+					// 4
+					onImageSuccess(imageData);
+
+					function onImageSuccess(fileURI) {
+						createFileEntry(fileURI);
+					}
+
+					function createFileEntry(fileURI) {
+						window.resolveLocalFileSystemURL(fileURI, copyFile, fail);
+					}
+
+					// 5
+					function copyFile(fileEntry) {
+						var name = fileEntry.fullPath.substr(fileEntry.fullPath.lastIndexOf('/') + 1);
+						var newName = makeid() + name;
+
+						window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(fileSystem2) {
+								fileEntry.copyTo(
+									fileSystem2,
+									newName,
+									onCopySuccess,
+									fail
+								);
+							},
+							fail);
+					}
+
+					// 6
+					function onCopySuccess(entry) {
+						$scope.$apply(function() {
+							$scope.user.image = entry.nativeURL;
+						});
+					}
+
+					function fail(error) {
+						console.log("fail: " + error.code);
 					}
 
 					function makeid() {
@@ -476,13 +528,12 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
 						}
 						return text;
 					}
-*/
-				},
-				function(err) {
-					console.log(err.code + ": " + error.message);
-				});
-		};
 
+				}, function(err) {
+					console.log(err);
+				});
+			}
+		}
 		$scope.setLocal = function() {
 			var checked = $scope.user.checked;
 			if (checked == true) {
@@ -493,9 +544,18 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
 					image: $scope.user.image,
 					checked: $scope.user.checked
 				});
-				$scope.user.image = $localStorage.getObject("user").image;
-				console.log($scope.user.name);
 				var user = $localStorage.getObject("user");
+				$timeout(function() {
+					$scope.$apply(function() {
+						$scope.user = {
+							name: user.name,
+							id: user.id,
+							image: user.image,
+							checked: user.checked
+						}
+					})
+				})
+				console.log($scope.user.name);
 				console.log(user.id)
 				if (user.id) {
 					angular.element("#barcode").JsBarcode(user.id, {
@@ -553,7 +613,6 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
 			}
 		}
 		$scope.onLoad = function() {
-			var image = window.localStorage["image"];
 			console.log("onLoad() called")
 			var user = $localStorage.getObject("user");
 			$timeout(function() {
@@ -561,7 +620,7 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
 					$scope.user = {
 						name: user.name,
 						id: user.id,
-						image: image,
+						image: user.image,
 						checked: user.checked
 					}
 				})
@@ -730,7 +789,7 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
 			$http.get("http://ajax.googleapis.com/ajax/services/feed/load", {
 					params: {
 						"v": "1.0",
-						"q": "http://feed43.com/lovett-ms-bulletin.xml"
+						"q": "http://www.lovett.org/rss.cfm?news=77"
 					}
 				})
 				.success(function(data) {
@@ -756,7 +815,7 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
 			$ionicLoading.show({
 				template: 'Loading...'
 			});
-			$http.get("http://ajax.googleapis.com/ajax/services/feed/load", {
+			$http.get("http://www.lovett.org/rss.cfm?news=76", {
 					params: {
 						"v": "1.0",
 						"q": "http://blog.nraboy.com/feed/"
@@ -805,22 +864,12 @@ angular.module('starter.controllers', ['ionic', 'ionic.utils', 'ngCordova', 'ti-
 	})
 
 .controller('AboutCtrl', function($scope) {
-		$scope.show = function() {
-			$('.meta').fadeToggle(400);
-		}
 	})
 	.controller('ChooseCtrl', function() {})
 	.controller('DashCtrl', function($scope, $localStorage) {})
 
 .controller('SettingsCtrl', function($scope, $cordovaCamera, $cordovaFile, $ionicActionSheet, $state) {
-		var setValues = function() {
-			$(document).ready(function() {
-				$('#fullName').val(window.localStorage["name"]);
-				$('#idNum').val(window.localStorage["id"]);
-			})
-		}
-		setValues();
 	})
 	.controller('SlideCtrl', function($scope, $ionicSlideBoxDelegate) {
-		$scope.user.enabled = true;
+		$scope.user.checked = true;
 	})
