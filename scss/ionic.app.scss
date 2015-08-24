@@ -1,0 +1,155 @@
+$light: #fff !default;
+$stable: #f8f8f8 !default;
+$positive: #3468ff !default;
+$calm: #669eff !default;
+$balanced: #33cd5f !default;
+$energized: #ffc666 !default;
+$assertive: #f66 !default;
+$royal: #66c4ff !default;
+$dark: #444 !default;
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+
+/* Empty. Add your own CSS if you like */
+body,
+.body,
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Open Sans", "Lato", "Roboto", "Helvetica", sans-serif !important;
+}
+
+.profile-img {
+  border-radius: 5px;
+}
+
+h1 {
+  text-align : center !important;
+  font-weight: 700 !important;
+}
+
+.welcome {
+  background-image: url("../img/welcome-background.jpeg");
+  color           : #fff !important;
+  background-size : cover;
+  text-align      : center;
+  font-size       : 1.1rem;
+  line-height     : 1.5rem;
+}
+
+#time {
+  color: #fff;
+}
+
+p {
+  font-weight: 300;
+}
+
+.about {
+  background-image   : url("../img/about-background.jpeg");
+  background-position: center;
+  color              : #fff !important;
+  background-size    : cover;
+  text-align         : center;
+  font-size          : 1.1rem;
+  line-height        : 1.5rem;
+}
+
+a {
+  color          : white;
+  text-decoration: none;
+}
+
+.custom-light {
+  color: #fff !important;
+}
+
+.button-white {
+  border-color: #fff !important;
+  color       : white !important;
+}
+
+.button-white.activated {
+  background-color: rgba(255, 255, 255, .2) !important;
+}
+
+.about {
+  margin-top: -100px !important;
+}
+
+@media screen and (max-height: 568px) {
+  .welcome {
+    margin-top: -100px !important;
+  }
+}
+
+.center {
+  text-align: center !important;
+}
+
+.name,
+.id {
+  text-align: center;
+}
+
+canvas#barcode {
+  margin : 0 auto;
+  padding: 0;
+  width  : 50%;
+  height : 100px;
+  margin-left: 25%;
+}
+
+
+/* Slider CSS */
+.container-one {
+  position: fixed;
+}
+
+.slide {
+  text-align: center;
+}
+
+div.list {
+  text-align: left;
+}
+
+div.list .item {
+  background-color: rgba(255, 255, 255, .7);
+}
+
+.input-assertive {
+  border: 1px solid $assertive !important;
+  color : $assertive !important;
+}
+
+.setUpForm {
+  margin-bottom: 3px;
+}
+
+.bar-custom {
+  border     : 0 solid white !important;
+  font-weight: 300 !important;
+  color      : black !important;
+}
+
+.container {
+  height: 100vh;
+  width : 100vw;
+}
+
+.settings-icon {
+  max-height    : 100% !important;
+  width         : auto;
+  padding-top   : 10px;
+  padding-bottom: 10px;
+  vertical-align: middle;
+}

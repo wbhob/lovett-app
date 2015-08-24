@@ -1,0 +1,102 @@
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light.ttf')  format('truetype');
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light-Oblique.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light-Oblique.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light-Oblique.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light-Oblique.ttf')  format('truetype');
+  font-weight: 100;
+  font-style: oblique;
+}
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular.ttf')  format('truetype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular-Oblique.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular-Oblique.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular-Oblique.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular-Oblique.ttf')  format('truetype');
+  font-weight: 300;
+  font-style: oblique;
+}
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold.ttf')  format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Comic Neue';
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold-Oblique.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold-Oblique.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold-Oblique.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold-Oblique.ttf')  format('truetype');
+  font-weight: 700;
+  font-style: oblique;
+}
+@font-face {
+  font-family: cursive;
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light.ttf')  format('truetype');
+  font-weight: 100;
+}
+@font-face {
+  font-family: cursive;
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light-Oblique.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light-Oblique.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light-Oblique.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Light-Oblique.ttf')  format('truetype');
+  font-weight: 100;
+  font-style: oblique;
+}
+@font-face {
+  font-family: cursive;
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular.ttf')  format('truetype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: cursive;
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular-Oblique.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular-Oblique.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular-Oblique.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Regular-Oblique.ttf')  format('truetype');
+  font-weight: 300;
+  font-style: oblique;
+}
+@font-face {
+  font-family: cursive;
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold.ttf')  format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: cursive;
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold-Oblique.eot');
+  src: url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold-Oblique.eot?#iefix') format('embedded-opentype'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold-Oblique.woff') format('woff'),
+       url('../lib/ionic/fonts/ComicNeue/ComicNeue-Bold-Oblique.ttf')  format('truetype');
+  font-weight: 700;
+  font-style: oblique;
+}

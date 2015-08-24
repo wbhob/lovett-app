@@ -1,0 +1,33 @@
+<ion-view>
+    <ion-content>
+        <h1 class="padding">Digital ID</h1>
+        <p class="padding" style="text-align:center">Edit your Digital ID if you feel you need to make a change.</p>
+        <div class="list">
+            <ion-toggle ng-model="user.checked" toggle-class="toggle-balanced" ng-change="setLocal()">Enable Digital ID</ion-toggle>
+            <div class="item item-input">
+                <label class="item-input-wrapper">
+                    <span class="input-label">Full Name</span>
+                    <input class="input" ng-trim="false" type="text" ng-model="user.name" ng-change="setLocal()">
+                </label>
+                <button class="icon ion-qr-scanner button-clear button-stable icon-right" style="font-size:24px; padding-right:20px; visibility:hidden"></button>
+            </div>
+            <div class="item item-input">
+                <label class="item-input-wrapper">
+                    <span class="input-label">ID Number</span>
+                    <input class="input" type="text" step="0.01" pattern="[0-9]*" ng-change="setLocal()" ng-model="user.id" />
+                </label>
+                <button class="icon ion-qr-scanner button-clear button-stable icon-right" style="font-size:24px; padding-right:20px" ng-click="scanBarcode()"></button>
+            </div>
+        </div>
+
+        <!-- Add Image -->
+        <div class="padding">
+            <button class="button button-outline button-assertive button-block icon ion-ios-download icon-right padding" ng-click="addImage()">
+                Import Image
+            </button>
+            <br>
+            <br>
+            <img src="" width="100%" ng-src="{{user.image}}" class="profile-img" />
+        </div>
+    </ion-content>
+</ion-view>

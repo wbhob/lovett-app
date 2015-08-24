@@ -1,0 +1,12 @@
+<ion-view ng-controller="MSCtrl">
+    <ion-content class="padding" ng-init="init()">
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="init()"></ion-refresher>
+        <div class="row">
+            <div class="col">
+                <h1 style="text-align:center">Middle School</h1>
+                <p ng-bind-html="entries">
+                </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

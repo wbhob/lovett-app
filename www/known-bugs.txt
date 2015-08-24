@@ -1,0 +1,3 @@
+4/13/2015 - status bar does not change color from white - Resolved (regular status bar)
+7/27/2015 - iOS 9 toggle has border, Digital ID does not hide/show - 7.27 Resolved (checked state of toggle)
+7/27/2015 - IAPs do not register

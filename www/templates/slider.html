@@ -1,0 +1,134 @@
+<ion-modal-view ng-controller="SlideCtrl">
+    <ion-header-bar class="bar bar-header bar-custom" style="position:fixed">
+        <!--<button class="button button-clear button-positive" ion-wizard-previous>Previous</button>-->
+
+        <div class="buttons">
+            <button class="button button-dark button-clear" ng-click="prevSlide()">Back</button>
+        </div>
+        <div class="title">
+            <img style="max-height:40px; width:auto; padding-top:5px; padding-bottom:5px;" src="img/header-logo.png">
+        </div>
+        <div class="buttons">
+            <button class="button button-clear button-positive" ion-wizard-next>Next</button>
+        </div>
+    </ion-header-bar>
+    <ion-content scroll="false">
+        <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)" delegate-handle="setUpBox" ion-wizard>
+            <ion-slide style="height:100vh" class="slide has-header" ion-wizard-step>
+                <ion-wizard-content class="padding">
+                    <h1>Welcome to the
+                        <br>
+                        <img src='img/header-logo.png' style="display:inline-block;height:48px; width:auto; vertical-align:middle"> App.</h1>
+                    <h4 style="font-weight:300">Let's take care of some stuff before we start.</h3>
+                        <button class="button button-clear button-positive icon-right ion-chevron-right" ng-click="nextSlide()" style="font-family:'Open Sans'">
+                            Onward!
+                        </button>
+                </ion-wizard-content>
+            </ion-slide>
+            <ion-slide style="height:100vh" class="slide" ion-wizard-step>
+                <ion-wizard-content>
+                    <div class="padding">
+                        <h1>Digital ID</h1>
+                        <p>Digital ID will let you use your ID in the café or campus store without having your physical ID.</p>
+                    </div>
+                    <div class="list setUpForm">
+                        <ion-toggle ng-model="user.checked" toggle-class="toggle-balanced">Enable Digital ID</ion-toggle>
+                        <div class="item item-input">
+                            <label class="item-input-wrapper">
+                                <span class="input-label">Full Name</span>
+                                <input class="input" type="text" ng-model="user.name">
+                            </label>
+                            <button class="icon ion-qr-scanner button-clear button-stable icon-right" style="font-size:24px; padding-right:20px; visibility:hidden"></button>
+                        </div>
+                        <div class="item item-input">
+                            <label class="item-input-wrapper">
+                                <span class="input-label">ID Number</span>
+                                <input class="input" type="text" id="idNumSetup" step="0.01" pattern="[0-9]*" ng-model="user.id" />
+                            </label>
+                            <button class="icon ion-qr-scanner button-clear button-stable icon-right" style="font-size:24px; padding-right:20px" ng-click="scanBarcode()"></button>
+                        </div>
+                    </div>
+                    <button class="button button-positive button-clear icon icon-right ion-chevron-right" ng-click="nextSlide()" style="font-family:'Open Sans'">
+                        Continue
+                    </button>
+                    <div class="padding">
+                        <button class="button button-outline button-positive button-block icon ion-ios-download icon-right" style="width:100%" ng-click="addImage()">Import Image</button>
+                        <img style="width:100%; height:auto; display:block;" ng-src="{{user.image}}" class="profile-img">
+                    </div>
+                    <br>
+                    <br>
+                </ion-wizard-content>
+            </ion-slide>
+            <ion-slide style="height:100vh" class="slide" ion-wizard-step>
+                <h1>Push Notifications</h1>
+                <p>Please enable push notifications in order to get an immediate update on the daily bulletin.</p>
+                <div class="list" id="pushNameList">
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Full Name</span>
+                        <input type="text" id="pushName" ng-value="user.name" placeholder="Johnny Karate">
+                    </label>
+                </div>
+                <div class="padding">
+                    <button class="button button-block button-dark button-outline icon ion-ios-person icon-right" id="identifyButton" ng-click="identifyUser()">
+                        Identify User
+                    </button>
+                    <button class="button button-block button-positive button-outline icon ion-android-notifications icon-right" ng-if="identified" ng-click="pushRegister()">
+                        Enable Push Notifications
+                    </button>
+                </div>
+                <button class="button button-clear button-positive icon-right ion-chevron-right" ng-click="nextSlide()" style="font-family:'Open Sans'">
+                    Skip
+                </button>
+            </ion-slide>
+            <ion-slide style="height:100vh" class="has-footer" ion-wizard-step>
+                <ion-wizard-scroll>
+                    <div class="padding" style="height:750px; margin-top:40px;">
+                        <h1>License and Agreements</h1>
+                        <p>
+                            As a member of the Lovett Community, you agree to all of the statements below by using The Lovett App (
+                            <em>"The App"</em>).
+                        </p>
+                        <p>
+                            <ol>
+                                <li>
+                                    1. The content within the app is confidential. You use The App solely for informational purposes, and agree not to distribute any of the information included for any reason, either by selling or publishing, regardless of the medium. This includes, but
+                                    is not limited to, audio, digital or physical, video, digital or physical, or written, digital or physical. You also agree not to distribute information within the app privately through media, including, but not limited
+                                    to, email, text message, telephone, or physical mail. Distribution of any information is subject to disciplinary action by the Lovett School or prosecution by law.
+                                </li>
+                                <li>
+                                    2. You use only YOUR information within the Digital ID. Using any other person's information, including, but not limited to, image, name, or ID number, is subject to disciplinary action by The Lovett School or prosecution by law.
+                                </li>
+                                <li>
+                                    3. Sending spam of any kind to the support e-mail or contact information in the About page is strictly prohibited, and is subject to disciplinary action by The Lovett School, or prosecution by law.
+                                </li>
+                            </ol>
+                        </p>
+                        <p>
+                            Violation of any of the terms stated above can result in disciplinary action by The Lovett School or prosecution by law. By agreeing to the terms, you also consent to all terms of the Lovett Character Pledge and Honor Code.
+                        </p>
+                    </div>
+                </ion-wizard-scroll>
+                <ion-footer-bar style="bottom:20px">
+                    <button class="button button-clear button-positive pull-right" ng-click="nextSlide()" style="font-family:'Open Sans'"><b>Agree</b></button>
+                </ion-footer-bar>
+            </ion-slide>
+            <ion-slide class="slide" style="height: 100vh !important;" ion-wizard-step>
+                <div class="padding">
+                    <h1>Password</h1>
+                    <p>
+                        Please enter the password to access the application.
+                    </p>
+                </div>
+                <div class="list" id="password-input-cont">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Password</span>
+                        <input type="password" id="passwordInput" placeholder="Password">
+                    </label>
+                </div>
+                <div class="padding">
+                    <button class="button button-positive button-block button-outline icon ion-ios-locked icon-right" ng-click="verify()" style="font-family:'Open Sans'">Submit</button>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+    </ion-content>
+</ion-modal-view>
